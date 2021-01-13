@@ -1,0 +1,41 @@
+AjoCard Senior Software Engineer (Golang) Challenge
+====================================================
+
+## Instructions
+
+Implement the scenario described below.
+
+* You *shall* complete this challenge using **Go language**,
+* You *should* try to show your development process to present a **production-ready** code,
+* Please, describe your approach, your technical choices, including architectural, and anything you want us to know in a results.md file,
+
+
+## The Scenario
+
+(Note, this is fictional, but gives a sense of the types of requests we might encounter):
+Our product team has heard from several customers that there are random times of failure for funds transfer (NIP) transactions.
+
+The team has designed a solution where the transfer service will check the success (active) status of service providers before completing the request. The API gateway will make a call to a new service you are going to create.
+
+The new service will be an HTTP-based API that checks for if the default NIP service provider is active. The API should return an indicator if the provider is active (has a failure rate of less than x%) . You can get a data set of NIP live success / failure rates from https://traf.nibss-plc.com.ng:7443/traf/ajax?command=website&action=detail&order=loadNIP&clientCode=NIBSS&txnSubCat=ALL.
+.
+
+We do our backend development in Go (Golang) and prefer solutions in that language.
+
+We'll be explicitly looking at coding style, code organization, API design, and operational/maintenance aspects such as logging and error handling. We'll also be giving bonus points for things like:
+
+* Documenting a plan for keeping the traffic data up to date. Extra bonus points for implementing the solution.
+* Including a Dockerfile for the running service.
+* Including a Kubernetes YAML file for running the service in an existing cluster
+* Exposing the service as gRPC in addition to HTTP
+* Other extensions to the service you think would be worthwhile. If you do so, please include a brief description of the feature and justification for its inclusion. Think of this as what you would have said during the design meeting to convince your team the effort was necessary.
+
+### Other important details
+---
+
+**Follow these instructions to submit your challenge.**
+- Create a repo on a private Github repository
+- Write your code on a separate branch
+- Commit your changes
+- Issue a Pull Request
+- Invite us (Github: "ajocardeng") as a collaborator to your repository.
