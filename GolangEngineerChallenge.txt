@@ -3,7 +3,7 @@ AjoCard Senior Software Engineer (Golang) Challenge
 
 ## Instructions
 
-Implement the scenario described below.
+Fork this repository, and implement the scenario described below.
 
 * You *shall* complete this challenge using **Go language**,
 * You *should* try to show your development process to present a **production-ready** code,
@@ -32,9 +32,13 @@ We'll be explicitly looking at coding style, code organization, API design, and 
 
 ### Other important details
 ---
+**Expected Implementation Time**
+
+There is no time limit for this exercise. For the minimal solution we expect 2 to 3 hours. For the full on solution and creative add ons, we expect 3+ hours.
+
 
 **Follow these instructions to submit your challenge.**
-- Create a repo on a private Github repository
+- Fork this repo to a private Github repository
 - Write your code on a separate branch
 - Commit your changes
 - Issue a Pull Request
