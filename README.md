@@ -32,3 +32,8 @@ $ curl http://localhost:8888/status
 ```
 $ go run grpc/client.go
 ```
+
+## Sample Response
+```
+{"Active": true,"FailureRate": 0.47, "FailureThreshold": 0.5}
+```
