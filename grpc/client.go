@@ -8,6 +8,8 @@ import (
 
 	"aminuolawale/ajocard/grpc/status"
 	"aminuolawale/ajocard/helpers"
+
+	jb "github.com/golang/protobuf/jsonpb"
 )
 
 func main() {
@@ -23,6 +25,9 @@ func main() {
 
 	response, err := s.GetStatus(context.Background(), &status.Status{})
 	helpers.HandleError(err)
-	log.Printf("Response Body: %s", response)
+	m := jb.Marshaler{}
+	str, _:= m.MarshalToString(response)
+	
+	log.Printf("Response Body: %s", str)
 
 }

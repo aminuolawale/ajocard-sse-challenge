@@ -16,7 +16,7 @@ import (
 
 
 func statusHandler(w http.ResponseWriter, r *http.Request){
-	response := helpers.CheckStatus()
+	response := helpers.ReadStatus()
 	json.NewEncoder(w).Encode(response)
 	helpers.WriteLogs(r, response)
 }

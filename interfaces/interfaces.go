@@ -5,6 +5,7 @@ package interfaces
 type StatusResponse struct {
 	Active bool
 	FailureRate float64
+	FailureThreshold float64
 }
 
 type Message struct {

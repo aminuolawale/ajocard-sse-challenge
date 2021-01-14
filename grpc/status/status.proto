@@ -4,6 +4,7 @@ package status;
 message Status {
   bool Active = 1;
   float FailureRate = 2;
+  float FailureThreshold = 3;
 }
 
 service StatusService {

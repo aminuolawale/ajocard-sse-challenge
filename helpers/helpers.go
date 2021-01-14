@@ -3,10 +3,12 @@ package helpers
 import (
 	"aminuolawale/ajocard/interfaces"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
-	"math"
 )
 
 const NIP_RATES_URL = "https://traf.nibss-plc.com.ng:7443/traf/ajax?command=website&action=detail&order=loadNIP&clientCode=NIBSS&txnSubCat=ALL"
@@ -88,10 +90,6 @@ func sliceContains(s []string, val string) bool {
 }
 
 
-
-
-
-
 func CheckStatus()interfaces.StatusResponse{
 	res, err := http.Get(NIP_RATES_URL)
 	HandleError(err)
@@ -103,9 +101,27 @@ func CheckStatus()interfaces.StatusResponse{
 	maxFailure := math.Max(inwardFailure, outwardFailure)
 	var response interfaces.StatusResponse
 	if maxFailure < FAILURE_THRESHOLD {
-		response = interfaces.StatusResponse{Active: true, FailureRate: maxFailure}
+		response = interfaces.StatusResponse{Active: true, FailureRate: maxFailure, FailureThreshold: FAILURE_THRESHOLD}
 	} else {
-		response = interfaces.StatusResponse{Active: false, FailureRate: maxFailure}
+		response = interfaces.StatusResponse{Active: false, FailureRate: maxFailure, FailureThreshold: FAILURE_THRESHOLD}
 	}
 	return response
+}
+
+
+func SaveStatus(){
+	fmt.Print("did this get called at all?")
+	status := CheckStatus()
+	file, err := json.MarshalIndent(status, "", " ")
+	HandleError(err)
+	err = ioutil.WriteFile("data/data.json", file, 0644)
+	HandleError(err)
+}
+
+func ReadStatus() interfaces.StatusResponse{
+	status:= interfaces.StatusResponse{}
+	f,_ := ioutil.ReadFile("data/data.json") 
+	_ = json.Unmarshal([]byte(f), &status)
+	fmt.Println(status)
+	return status
 }

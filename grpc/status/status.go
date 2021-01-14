@@ -1,15 +1,15 @@
 package status
 
 import (
+	"aminuolawale/ajocard/helpers"
 
 	"golang.org/x/net/context"
-	"aminuolawale/ajocard/helpers"
 )
 
 type Server struct {
 }
 
 func (s *Server) GetStatus(ctx context.Context, in *Status) (*Status, error) {
-	response := helpers.CheckStatus()
-	return &Status{Active: response.Active, FailureRate: float32(response.FailureRate)}, nil
+	response := helpers.ReadStatus()
+	return &Status{Active: response.Active, FailureRate: float32(response.FailureRate), FailureThreshold:float32(response.FailureThreshold)}, nil
 }
