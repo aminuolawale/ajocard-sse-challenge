@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nip-checker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nip-checker
+  template:
+    metadata:
+      labels:
+        app: nip-checker
+    spec:
+      containers:
+      - name: nip-checker
+        image: nip-checker:latest
+        ports:
+        - containerPort: 8888
