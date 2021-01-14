@@ -1,0 +1,11 @@
+syntax = "proto3";
+package status;
+
+message Status {
+  bool Active = 1;
+  float FailureRate = 2;
+}
+
+service StatusService {
+  rpc GetStatus(Status) returns (Status) {}
+}
